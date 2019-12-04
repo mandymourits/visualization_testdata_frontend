@@ -1,0 +1,15 @@
+{
+  "scenariobuilder": {
+    "host": "localhost",
+    "portMap": {
+      "functional": 8096
+    }
+  },
+  "frameworkbuilder": {
+    "host": "localhost",
+    "portMap": {
+      "functional": 8097
+    }
+  }
+}
+

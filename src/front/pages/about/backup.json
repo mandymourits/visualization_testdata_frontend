@@ -1,0 +1,302 @@
+[
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "GoToActivities",
+    "navnameselector": "#workspace > table > tbody > tr:nth-child(1) > td:nth-child(2)",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "StartDatumActiviteit",
+    "selector": "StartDatumActiviteit",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "GoToOrganisation",
+    "navnameselector": "#workspace > table > tbody > tr:nth-child(1) > td:nth-child(1)",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Overzichten",
+    "navname": "GoToDashboard",
+    "navnameselector": "#workspace > table > tbody > tr:nth-child(2) > td:nth-child(1)",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Instellingen",
+    "navname": "GoToSettings",
+    "navnameselector": "#workspace > table > tbody > tr:nth-child(2) > td:nth-child(2)",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Organisation",
+    "selector": "OrgID",
+    "type": "input(id)",
+    "value": "99899"
+  },
+  {
+    "istest": false,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Login",
+    "selector": "LoginID",
+    "type": "input(id)",
+    "value": "demo"
+  },
+  {
+    "istest": true,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Organisation",
+    "selector": "",
+    "type": "",
+    "value": "99899"
+  },
+  {
+    "istest": true,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Login",
+    "selector": "",
+    "type": "",
+    "value": "demo"
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "EindDatumActiviteit",
+    "selector": "EindDatumActiviteit",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "LeeftijdVanaf",
+    "selector": "LeeftijdVanaf",
+    "type": "dropDown(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "LeeftijdTM",
+    "selector": "LeeftijdTM",
+    "type": "dropDown(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Emailadres",
+    "selector": "Emailadres",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "LongID",
+    "selector": "LongID",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "ShortID",
+    "selector": "ShortID",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Adres",
+    "selector": "Adres",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "PostCode",
+    "selector": "Postcode",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Plaats",
+    "selector": "Plaats",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Organisatie",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Land",
+    "selector": "Land",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Verantwoordelijke",
+    "selector": "Verantwoordelijke",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Akkoord",
+    "selector": "Akkoord",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "SelectVerantwoordelijke",
+    "selector": "vlid",
+    "type": "dropDown(id)",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Autoplanner",
+    "selector": "Autoplanner",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": true,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "GoToActivities",
+    "navnameselector": "",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": true,
+    "pagename": "Overzichten",
+    "navname": null,
+    "navnameselector": "",
+    "fieldname": "",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": true,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Wachtwoord",
+    "selector": "",
+    "type": "",
+    "value": "22drugswet@"
+  },
+  {
+    "istest": false,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Wachtwoord",
+    "selector": "Wachtwoord",
+    "type": "input(id)",
+    "value": ""
+  },
+  {
+    "istest": true,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Submit",
+    "selector": "",
+    "type": "",
+    "value": ""
+  },
+  {
+    "istest": false,
+    "pagename": "Login",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "Submit",
+    "selector": "//*[@id=\"workspace\"]/table/tbody/tr[6]/td[2]/button",
+    "type": "button(xpath)",
+    "value": ""
+  },
+  {
+    "istest": true,
+    "pagename": "ActiviteitenBeheer",
+    "navname": "",
+    "navnameselector": "",
+    "fieldname": "LeeftijdVanaf",
+    "selector": "",
+    "type": "",
+    "value": "20"
+  }
+]
