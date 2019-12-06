@@ -1,0 +1,9 @@
+{
+  "environments": {
+    "test": {
+      "scripts": {
+        "start": "npm run prod-static && nodemon ./src/server/server.js"
+      }
+    }
+  }
+}
