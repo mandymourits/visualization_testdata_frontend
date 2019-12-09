@@ -215,7 +215,7 @@
     "recompose": "^0.27.0",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "serialize-javascript": "^1.5.0",
+    "serialize-javascript": "^2.1.1",
     "serve-favicon": "^2.5.0",
     "smoothscroll-polyfill": "^0.4.3",
     "styled-components": "^3.2.6"
