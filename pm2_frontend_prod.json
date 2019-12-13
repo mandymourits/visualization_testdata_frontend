@@ -2,7 +2,7 @@
   "apps": [
     {
       "name": "frontend_prod",
-      "cwd": "/var/lib/jenkins/workspace/VirtualizationTool/frontend",
+      "cwd": "/var/lib/jenkins/workspace/Sourcecode_frontend",
       "script": "npm run serve-prod-static",
       "args": "",
       "watch": true
