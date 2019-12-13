@@ -95,7 +95,7 @@ class Main extends React.Component {
     this.toggledropdownAccessType = this.toggledropdownAccessType.bind(this);
     this.handleTypesGenerationProcess = this.handleTypesGenerationProcess.bind(this);
     this.state = {
-      url: 'http://localhost:9009/',
+      url: 'http://81.169.211.171:9009/',
       activeTab: '1',
       dropdownOpen: false,
       imageURL: '',
