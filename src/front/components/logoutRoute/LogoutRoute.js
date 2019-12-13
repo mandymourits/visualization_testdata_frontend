@@ -27,6 +27,7 @@ class LogoutRoute extends PureComponent<Props, State> {
   // #region lifecycle
   componentDidMount() {
     auth.clearAllAppStorage();
+    sessionStorage.clear();
   }
 
   render() {

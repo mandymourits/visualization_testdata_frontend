@@ -12,6 +12,7 @@ import Row from 'reactstrap/lib/Row';
 import Col from 'reactstrap/lib/Col';
 import auth from '../../services/auth';
 import { type UserAuthActions } from '../../types/redux/userAuth';
+import {loginUser} from '../../services/API/Api';
 // #endregion
 
 // #region flow types
@@ -58,10 +59,10 @@ class Login extends PureComponent<Props, State> {
 
     return (
       <div className="content">
-        <Row>
+        <Row id="test">
           <Col md={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
             <form className="form-horizontal" noValidate>
-              <fieldset>
+              <fieldset  id="test">
                 <legend>Login</legend>
 
                 <div className="form-group">
@@ -108,7 +109,7 @@ class Login extends PureComponent<Props, State> {
                   <Col lg={{ size: 12 }}>
                     <Button
                       className="login-button btn-block"
-                      color="primary"
+                      color="warning"
                       disabled={isLogging}
                       onClick={this.handlesOnLogin}
                     >
@@ -122,6 +123,10 @@ class Login extends PureComponent<Props, State> {
                       )}
                     </Button>
                   </Col>
+                  <Button
+                    color="link"
+                    onClick={this.handleButtonCreateAccount}
+                  >Create account</Button>
                 </div>
               </fieldset>
             </form>
@@ -130,9 +135,6 @@ class Login extends PureComponent<Props, State> {
         <Row>
           <Col md={{ size: 4, offset: 4 }} xs={{ size: 10, offset: 1 }}>
             <div className="pull-right">
-              <Button className="btn-block" onClick={this.goHome}>
-                back to home
-              </Button>
             </div>
           </Col>
         </Row>
@@ -141,6 +143,15 @@ class Login extends PureComponent<Props, State> {
   }
   // #endregion
 
+  //Create account
+  // #region on login button click callback
+  handleButtonCreateAccount = async (event: SyntheticEvent<>) => {
+    if (event) {
+      event.preventDefault();
+    }
+    const { history } = this.props;
+    history.push({ pathname: '/account' }); // back to Home
+  };
   // #region form inputs change callbacks
   handlesOnEmailChange = (event: SyntheticEvent<>) => {
     if (event) {
@@ -161,12 +172,11 @@ class Login extends PureComponent<Props, State> {
 
   // #region on login button click callback
   handlesOnLogin = async (event: SyntheticEvent<>) => {
-    console.log(this.state.password);
     if (event) {
       event.preventDefault();
     }
 
-    const { history, logUserIfNeeded } = this.props;
+    const { history } = this.props;
 
     const { email, password } = this.state;
 
@@ -176,15 +186,20 @@ class Login extends PureComponent<Props, State> {
     };
 
     try {
-      const response = await logUserIfNeeded(userLogin);
-      const {
-        data: { token, user },
-      } = response.payload;
+      let body = {
+        username:'testuser998',
+        password: 'welkom',
+      };
+      console.log(userLogin.login);
+      console.log(userLogin.password);
 
-      auth.setToken(token);
-      auth.setUserInfo(user);
-
-      history.push({ pathname: '/' }); // back to Home
+      sessionStorage.setItem('USERNAME', userLogin.login);
+      sessionStorage.setItem('PASSWORD', userLogin.password);
+      const response = await loginUser('http://localhost:9009/users/token',sessionStorage.getItem('USERNAME'),sessionStorage.getItem('PASSWORD'));
+      console.log(response);
+      auth.setToken(response.token);
+      auth.setUserInfo(response.id);
+      history.push({ pathname: '/protected' }); // back to Home
     } catch (error) {
       /* eslint-disable no-console */
       console.log('login went wrong..., error: ', error);

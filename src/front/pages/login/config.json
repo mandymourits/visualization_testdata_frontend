@@ -1,0 +1,20 @@
+{
+  "CardTitle1": {
+    "Title": "Test data",
+    "value": "U kunt hieronder testdata aanmaken. Vindt u dat teveel werk dan kunt u ook een request sturen naar: http://localhost:8096/create met in de body {\"name\":\"test\",\"property\":\"Postcode\",\"value\":\"2803 DR\",\"page\":\"Pagina\",\"dossiers\":\"test\"}"
+  },
+  "CardTitle2": {
+    "Title": "Creeer een dataset",
+    "value": "U kunt in 1 test kiezen uit meerdere scenario's. U kunt hieronder iedere scenario een naam geven. Een scenario is bijvoorbeeld een xml file."
+  },
+  "CardTitle3": {
+    "Title": "Kies een bestaande dataset",
+    "value": "U kunt ook kiezen uit een bestaande set."
+  },
+  "CardTitle4": {
+    "Title": "Dataset structuur",
+    "value": "U kunt hieronder aangeven in welke folder naam de berichten/testen moeten komen. De folders worden na generatie automatisch aangemaakt."
+  }
+}
+
+

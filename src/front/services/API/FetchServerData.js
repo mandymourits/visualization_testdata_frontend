@@ -7,8 +7,9 @@ import {
   defaultOptions,
   getLocationOrigin,
 } from './fetchTools';
+var base64 = require('base-64');
 
-const getAllScenariosByName = async (url, scenario,isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
+const getAllScenariosByName = async (url, scenario, isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -16,7 +17,7 @@ const getAllScenariosByName = async (url, scenario,isTest) => fetch(url + 'getAl
     },
   }).then(response => response.json());
 
-const getSharp = async (url,scenario,isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
+const getSharp = async (url, scenario, isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -24,7 +25,7 @@ const getSharp = async (url,scenario,isTest) => fetch(url + 'getAllScenariosByNa
     },
   }).then(response => response.json());
 
-const getFile = async (url,filename) => fetch(url + 'file/'+filename,
+const getFile = async (url, filename) => fetch(url + 'file/' + filename,
   {
     headers: {
       'Content-Type': 'application/octet-stream',
@@ -39,7 +40,7 @@ const getUniqueNames = async (url) => fetch(url + 'getUniqueNames',
     },
   }).then(response => response.json());
 
-const getNavItems = async (url,scenario,isTest) => fetch(url + 'getNavItems/' + scenario + '/' + isTest,
+const getNavItems = async (url, scenario, isTest) => fetch(url + 'getNavItems/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -47,7 +48,7 @@ const getNavItems = async (url,scenario,isTest) => fetch(url + 'getNavItems/' + 
     },
   }).then(response => response.json());
 
-const getFieldNames = async (url,scenario,isTest) => fetch(url + 'getFieldNames/' + scenario + '/' + isTest,
+const getFieldNames = async (url, scenario, isTest) => fetch(url + 'getFieldNames/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -58,27 +59,18 @@ const getFieldNames = async (url,scenario,isTest) => fetch(url + 'getFieldNames/
 const getFrameWork = async (url) => fetch(url + 'getFieldNames',
   {
     headers: {
-      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Origin': '*',
     },
   }).then(response => response.json());
 
-const getById = async (url,id) => fetch(url + 'get/'+id,
+const getById = async (url, id) => fetch(url + 'get/' + id,
   {
     headers: {
-      'Access-Control-Allow-Origin':'*',
+      'Access-Control-Allow-Origin': '*',
     },
   }).then(response => response.json());
 
-const postScenarioData = async (url,scenario, isTest) => fetch(url + 'getFramework/' + scenario + '/' + isTest,
-  {
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-  }).then(response => response.json());
-
-const autoFill = async (url,pageName) => fetch(url + 'autofill/' + pageName,
+const postScenarioData = async (url, scenario, isTest) => fetch(url + 'getFramework/' + scenario + '/' + isTest,
   {
     method: 'GET',
     headers: {
@@ -87,7 +79,16 @@ const autoFill = async (url,pageName) => fetch(url + 'autofill/' + pageName,
     },
   }).then(response => response.json());
 
-const postScenarioData2 = async (url,data) => fetch(url + 'create',
+const autoFill = async (url, pageName) => fetch(url + 'autofill/' + pageName,
+  {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+  }).then(response => response.json());
+
+const postScenarioData2 = async (url, data) => fetch(url + 'create',
   {
     method: 'POST',
     headers: {
@@ -97,7 +98,7 @@ const postScenarioData2 = async (url,data) => fetch(url + 'create',
     body: JSON.stringify(data),
   }).then(response => response.json());
 
-const autoFillPageObjects = (url,data) => {
+const autoFillPageObjects = (url, data) => {
   let { timeout = 500000, ...rest } = {
     method: 'POST',
     headers: {
@@ -106,13 +107,13 @@ const autoFillPageObjects = (url,data) => {
     },
     body: JSON.stringify(data),
   };
-  console.log(JSON.stringify(data))
-  if (rest.signal) throw new Error("Signal not supported in timeoutable fetch");
+  console.log(JSON.stringify(data));
+  if (rest.signal) throw new Error('Signal not supported in timeoutable fetch');
   const controller = new AbortController();
   const { signal } = controller;
   return new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
-      reject(new Error("Timeout for Promise"));
+      reject(new Error('Timeout for Promise'));
       controller.abort();
     }, timeout);
     fetch(url + 'autoFillPageObjects', { signal, ...rest })
@@ -121,7 +122,29 @@ const autoFillPageObjects = (url,data) => {
   });
 };
 
-const editScenario = async (url,id, data) => fetch(url + 'edit/'+id,
+const createUser = async (url, data) => fetch(url + 'users',
+  {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  }).then(response => response.json());
+
+var Buffer = require('buffer/').Buffer;
+
+const loginUser = (url, userName,passWord) => fetch(url,
+  {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      'Authorization': 'Basic ' + base64.encode(userName + ':' + passWord),
+    },
+  }).then(response => response.json());
+
+const editScenario = async (url, id, data) => fetch(url + 'edit/' + id,
   {
     method: 'PUT',
     headers: {
@@ -131,7 +154,7 @@ const editScenario = async (url,id, data) => fetch(url + 'edit/'+id,
     body: JSON.stringify(data),
   }).then(response => response);
 
-const deleteScenario = async (url,data) => fetch(url + 'delete/' + data,
+const deleteScenario = async (url, data) => fetch(url + 'delete/' + data,
   {
     method: 'DELETE',
     headers: {
@@ -140,7 +163,7 @@ const deleteScenario = async (url,data) => fetch(url + 'delete/' + data,
     },
   }).then(response => response);
 
-const getAllFrameworkDataByName = async (url,framework) => fetch(url + 'getAllFrameworkDataByName/' + framework + '',
+const getAllFrameworkDataByName = async (url, framework) => fetch(url + 'getAllFrameworkDataByName/' + framework + '',
   {
     headers: {
       'Accept': 'application/json',
@@ -148,7 +171,7 @@ const getAllFrameworkDataByName = async (url,framework) => fetch(url + 'getAllFr
     },
   }).then(response => response.json());
 
-const getFrameworkObjects = async (url,frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
+const getFrameworkObjects = async (url, frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -156,7 +179,7 @@ const getFrameworkObjects = async (url,frameworktype, scenario, isTest) => fetch
     },
   }).then(response => response.text());
 
-const getCucumberTest = async (url,frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
+const getCucumberTest = async (url, frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -165,4 +188,24 @@ const getCucumberTest = async (url,frameworktype, scenario, isTest) => fetch(url
   }).then(response => response.text());
 
 
-export {autoFillPageObjects,getAllScenariosByName,postScenarioData,getUniqueNames, getAllFrameworkDataByName,getNavItems,getFieldNames,getFrameWork,postScenarioData2, deleteScenario,getFrameworkObjects,getSharp,getFile,getCucumberTest,editScenario,getById,autoFill};
+export {
+  loginUser,
+  createUser,
+  autoFillPageObjects,
+  getAllScenariosByName,
+  postScenarioData,
+  getUniqueNames,
+  getAllFrameworkDataByName,
+  getNavItems,
+  getFieldNames,
+  getFrameWork,
+  postScenarioData2,
+  deleteScenario,
+  getFrameworkObjects,
+  getSharp,
+  getFile,
+  getCucumberTest,
+  editScenario,
+  getById,
+  autoFill,
+};

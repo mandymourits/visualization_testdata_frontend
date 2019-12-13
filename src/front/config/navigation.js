@@ -24,23 +24,22 @@ const navigation = {
       link: '/',
     },
     {
-      label: 'Protected',
-      link: '/protected',
-      view: 'protected',
-      isRouteBtn: true,
-    },
-    {
-      label: 'Demo Hybride Frameworks',
+      label: 'Demo',
       link: '/about',
       view: 'about',
       isRouteBtn: true,
     },
-    // {
-    //   label: 'Disconnect',
-    //   link: '/login',
-    //   view: 'login',
-    //   isRouteBtn: true,
-    // },
+    {
+      label: 'Login',
+      link: '/Login',
+      view: 'protected',
+      isRouteBtn: true,
+    },
+    {
+      label: 'Logout',
+      link: '/',
+      isRouteBtn: true,
+    },
   ],
 };
 
