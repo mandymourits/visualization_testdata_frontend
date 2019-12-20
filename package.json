@@ -17,9 +17,6 @@
     "npm": ">=6.9.0",
     "yarn": ">=1.17.0"
   },
-  "heroku-postbuild": {
-    "serve-prod-static": "yarn run prod-static && node ./src/server/server.js"
-  },
   "scripts": {
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
