@@ -91,7 +91,7 @@ class TargetsTable extends React.Component {
   async update(state) {
     if (state === true){
       if (this.props.dataset !== '') {
-        let data = await getAllScenariosByName(this.props.url,this.props.dataset, false);
+        let data = await getAllScenariosByName(this.props.dataset, false);
         this.setState({
           scenarios: data,
         });
@@ -109,7 +109,7 @@ class TargetsTable extends React.Component {
       modal: !this.state.modal,
       id: event.target.value,
     });
-    let scenario = await getById(this.props.url,event.target.value);
+    let scenario = await getById(event.target.value);
     this.setState({
       pagename: scenario.pagename,
       navname: scenario.navname,
@@ -133,7 +133,7 @@ class TargetsTable extends React.Component {
       type: this.state.type,
       value: this.state.value,
     };
-    await editScenario(this.props.url,event.target.value, data);
+    await editScenario(event.target.value, data);
     await this.update(true);
     this.setState({
       modal: false,
@@ -141,7 +141,7 @@ class TargetsTable extends React.Component {
   }
 
   async removeRowOrPopUp(event) {
-      let data = await deleteScenario(this.props.url,event.target.value);
+      let data = await deleteScenario(event.target.value);
     await this.update(true);
   }
 
@@ -170,13 +170,13 @@ class TargetsTable extends React.Component {
   renderPopUpEdit(p) {
     return (
       <div>
-        <DropdownMenu size="sm">
-          <DropdownItem tag="a" href="/blah" active>Inactive</DropdownItem>
-          <DropdownItem tag="a" href="/blah" active>Waiting</DropdownItem>
-          <DropdownItem tag="a" href="/blah" active>Ready</DropdownItem>
-          <DropdownItem tag="a" href="/blah" active>Bug</DropdownItem>
-          <DropdownItem tag="a" href="/blah" active>Old Version</DropdownItem>
-        </DropdownMenu>
+        {/*<DropdownMenu size="sm">*/}
+        {/*  <DropdownItem tag="a" href="/blah" active>Inactive</DropdownItem>*/}
+        {/*  <DropdownItem tag="a" href="/blah" active>Waiting</DropdownItem>*/}
+        {/*  <DropdownItem tag="a" href="/blah" active>Ready</DropdownItem>*/}
+        {/*  <DropdownItem tag="a" href="/blah" active>Bug</DropdownItem>*/}
+        {/*  <DropdownItem tag="a" href="/blah" active>Old Version</DropdownItem>*/}
+        {/*</DropdownMenu>*/}
         <Button color="warning" size="sm" value={p.id} onClick={this.togglePopup}>Edit</Button>
         <Button size="sm" value={p.id} onClick={this.removeRowOrPopUp}>Remove</Button>
         <Modal isOpen={this.state.modal} fade={false} toggle={this.togglePopup} className={classnames}>
@@ -269,10 +269,10 @@ class TargetsTable extends React.Component {
               <td>{p.pagename}</td>
               <td>{p.navname}</td>
               <td>{p.navnameselector}</td>
-              {/*<td>{p.fieldname}</td>*/}
-              {/*<td>{p.selector}</td>*/}
-              {/*<td>{p.type}</td>*/}
-              {/*<td>{p.value}</td>*/}
+              <td>{p.fieldname}</td>
+              <td>{p.selector}</td>
+              <td>{p.type}</td>
+              <td>{p.value}</td>
               <td>{this.renderPopUpEdit(p)}</td>
             </tr>
           );

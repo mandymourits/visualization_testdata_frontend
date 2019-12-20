@@ -186,16 +186,12 @@ class Login extends PureComponent<Props, State> {
     };
 
     try {
-      let body = {
-        username:'testuser998',
-        password: 'welkom',
-      };
       console.log(userLogin.login);
       console.log(userLogin.password);
 
       sessionStorage.setItem('USERNAME', userLogin.login);
       sessionStorage.setItem('PASSWORD', userLogin.password);
-      const response = await loginUser('http://81.169.211.171:9009/users/token',sessionStorage.getItem('USERNAME'),sessionStorage.getItem('PASSWORD'));
+      const response = await loginUser(sessionStorage.getItem('USERNAME'),sessionStorage.getItem('PASSWORD'));
       console.log(response);
       auth.setToken(response.token);
       auth.setUserInfo(response.id);

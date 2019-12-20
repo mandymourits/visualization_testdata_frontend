@@ -9,7 +9,7 @@ import {
 } from './fetchTools';
 var base64 = require('base-64');
 
-const getAllScenariosByName = async (url, scenario, isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
+const getAllScenariosByName = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getAllScenariosByName/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -17,7 +17,7 @@ const getAllScenariosByName = async (url, scenario, isTest) => fetch(url + 'getA
     },
   }).then(response => response.json());
 
-const getSharp = async (url, scenario, isTest) => fetch(url + 'getAllScenariosByName/' + scenario + '/' + isTest,
+const getSharp = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getAllScenariosByName/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -25,14 +25,14 @@ const getSharp = async (url, scenario, isTest) => fetch(url + 'getAllScenariosBy
     },
   }).then(response => response.json());
 
-const getFile = async (url, filename) => fetch(url + 'file/' + filename,
+const getFile = async ( filename) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'file/' + filename,
   {
     headers: {
       'Content-Type': 'application/octet-stream',
     },
   }).then(response => response.blob());
 
-const getUniqueNames = async (url) => fetch(url + 'getUniqueNames',
+const getUniqueNames = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getUniqueNames',
   {
     headers: {
       'Accept': 'application/json',
@@ -40,7 +40,7 @@ const getUniqueNames = async (url) => fetch(url + 'getUniqueNames',
     },
   }).then(response => response.json());
 
-const getNavItems = async (url, scenario, isTest) => fetch(url + 'getNavItems/' + scenario + '/' + isTest,
+const getNavItems = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getNavItems/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -48,7 +48,7 @@ const getNavItems = async (url, scenario, isTest) => fetch(url + 'getNavItems/' 
     },
   }).then(response => response.json());
 
-const getFieldNames = async (url, scenario, isTest) => fetch(url + 'getFieldNames/' + scenario + '/' + isTest,
+const getFieldNames = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getFieldNames/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -56,21 +56,21 @@ const getFieldNames = async (url, scenario, isTest) => fetch(url + 'getFieldName
     },
   }).then(response => response.json());
 
-const getFrameWork = async (url) => fetch(url + 'getFieldNames',
+const getFrameWork = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getFieldNames',
   {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
   }).then(response => response.json());
 
-const getById = async (url, id) => fetch(url + 'get/' + id,
+const getById = async ( id) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'get/' + id,
   {
     headers: {
       'Access-Control-Allow-Origin': '*',
     },
   }).then(response => response.json());
 
-const postScenarioData = async (url, scenario, isTest) => fetch(url + 'getFramework/' + scenario + '/' + isTest,
+const postScenarioData = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getFramework/' + scenario + '/' + isTest,
   {
     method: 'GET',
     headers: {
@@ -79,7 +79,7 @@ const postScenarioData = async (url, scenario, isTest) => fetch(url + 'getFramew
     },
   }).then(response => response.json());
 
-const autoFill = async (url, pageName) => fetch(url + 'autofill/' + pageName,
+const autoFill = async ( pageName) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'autofill/' + pageName,
   {
     method: 'GET',
     headers: {
@@ -88,7 +88,7 @@ const autoFill = async (url, pageName) => fetch(url + 'autofill/' + pageName,
     },
   }).then(response => response.json());
 
-const postScenarioData2 = async (url, data) => fetch(url + 'create',
+const postScenarioData2 = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'create',
   {
     method: 'POST',
     headers: {
@@ -98,7 +98,7 @@ const postScenarioData2 = async (url, data) => fetch(url + 'create',
     body: JSON.stringify(data),
   }).then(response => response.json());
 
-const autoFillPageObjects = (url, data) => {
+const autoFillPageObjects = ( data) => {
   let { timeout = 500000, ...rest } = {
     method: 'POST',
     headers: {
@@ -116,13 +116,13 @@ const autoFillPageObjects = (url, data) => {
       reject(new Error('Timeout for Promise'));
       controller.abort();
     }, timeout);
-    fetch(url + 'autoFillPageObjects', { signal, ...rest })
+    fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'autoFillPageObjects', { signal, ...rest })
       .finally(() => clearTimeout(timer))
       .then(resolve, reject);
   });
 };
 
-const createUser = async (url, data) => fetch(url + 'users',
+const createUser = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'users',
   {
     method: 'POST',
     headers: {
@@ -134,7 +134,7 @@ const createUser = async (url, data) => fetch(url + 'users',
 
 var Buffer = require('buffer/').Buffer;
 
-const loginUser = (url, userName,passWord) => fetch(url,
+const loginUser = ( userName,passWord) => fetch(
   {
     method: 'POST',
     headers: {
@@ -144,7 +144,7 @@ const loginUser = (url, userName,passWord) => fetch(url,
     },
   }).then(response => response.json());
 
-const editScenario = async (url, id, data) => fetch(url + 'edit/' + id,
+const editScenario = async ( id, data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'edit/' + id,
   {
     method: 'PUT',
     headers: {
@@ -154,7 +154,7 @@ const editScenario = async (url, id, data) => fetch(url + 'edit/' + id,
     body: JSON.stringify(data),
   }).then(response => response);
 
-const deleteScenario = async (url, data) => fetch(url + 'delete/' + data,
+const deleteScenario = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'delete/' + data,
   {
     method: 'DELETE',
     headers: {
@@ -163,7 +163,7 @@ const deleteScenario = async (url, data) => fetch(url + 'delete/' + data,
     },
   }).then(response => response);
 
-const getAllFrameworkDataByName = async (url, framework) => fetch(url + 'getAllFrameworkDataByName/' + framework + '',
+const getAllFrameworkDataByName = async ( framework) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'getAllFrameworkDataByName/' + framework + '',
   {
     headers: {
       'Accept': 'application/json',
@@ -171,7 +171,7 @@ const getAllFrameworkDataByName = async (url, framework) => fetch(url + 'getAllF
     },
   }).then(response => response.json());
 
-const getFrameworkObjects = async (url, frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
+const getFrameworkObjects = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ frameworktype + '/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',
@@ -179,7 +179,7 @@ const getFrameworkObjects = async (url, frameworktype, scenario, isTest) => fetc
     },
   }).then(response => response.text());
 
-const getCucumberTest = async (url, frameworktype, scenario, isTest) => fetch(url + frameworktype + '/' + scenario + '/' + isTest,
+const getCucumberTest = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ frameworktype + '/' + scenario + '/' + isTest,
   {
     headers: {
       'Accept': 'application/json',

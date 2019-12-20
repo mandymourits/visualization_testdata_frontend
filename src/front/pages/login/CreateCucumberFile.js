@@ -69,7 +69,7 @@ class CreateCucumberFile extends React.Component {
 
   async downLoadFramework() {
     try {
-      let data = await getCucumberTest(this.props.url,'createCucumberTest', this.state.generatePage, 'true');
+      let data = await getCucumberTest('createCucumberTest', this.state.generatePage, 'true');
       console.log(data);
       this.setState({
         frameworkObjSharp: data,

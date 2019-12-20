@@ -57,7 +57,7 @@ class TargetsInputTable extends React.Component {
     this.setState({
       modal: !this.state.modal,
     });
-    let scenario = await getById(this.props.url, event.target.value);
+    let scenario = await getById( event.target.value);
     this.setState({
       pagename: scenario.pagename,
       navname: scenario.navname,
@@ -84,7 +84,7 @@ class TargetsInputTable extends React.Component {
   async update(state) {
     if (state === true){
       if (this.props.dataset !== '') {
-        let data = await getAllScenariosByName(this.props.url, this.props.dataset, true);
+        let data = await getAllScenariosByName( this.props.dataset, true);
         this.setState({
           scenarios: data,
         });
@@ -101,7 +101,7 @@ class TargetsInputTable extends React.Component {
       modal: !this.state.modal,
       id: event.target.value,
     });
-    let scenario = await getById(this.props.url,event.target.value);
+    let scenario = await getById(event.target.value);
     this.setState({
       pagename: scenario.pagename,
       navname: scenario.navname,
@@ -126,7 +126,7 @@ class TargetsInputTable extends React.Component {
       value: this.state.value,
     };
     console.log(data);
-    await editScenario(this.props.url, event.target.value, data);
+    await editScenario( event.target.value, data);
     await this.update(true);
     this.setState({
       modal: false,
@@ -134,7 +134,7 @@ class TargetsInputTable extends React.Component {
   }
 
   async removeRowOrPopUp(event) {
-    let data = await deleteScenario(this.props.url,event.target.value);
+    let data = await deleteScenario(event.target.value);
     await this.update(true);
   }
 
@@ -172,36 +172,38 @@ class TargetsInputTable extends React.Component {
 
   onSelectCustomerRequest(event) {
     console.log(event);
-    let data = deleteScenario(this.props.url, event.target.value);
+    let data = deleteScenario( event.target.value);
   }
   render() {
-    return (
-      <Table striped>
-        <thead>
-        <tr value={this.state.keyword}
-            onChange={(event)=>this.handleInputChange(event)}>
-          {this.props.columns.map(function(p, index) {
+    if(this.state.scenarios!=null) {
+      return (
+        <Table striped>
+          <thead>
+          <tr value={this.state.keyword}
+              onChange={(event) => this.handleInputChange(event)}>
+            {this.props.columns.map(function(p, index) {
+              return (
+                <th key={index}>{p}</th>
+              );
+            })}
+          </tr>
+          </thead>
+          <tbody>
+          {this.state.scenarios.map(function(p, index) {
             return (
-              <th key={index}>{p}</th>
+              <tr key={index}>
+                <td>{index}</td>
+                <td>{p.navname}</td>
+                <td>{p.fieldname}</td>
+                <td>{p.value}</td>
+                <td>{this.renderPopUpEdit(p)}</td>
+              </tr>
             );
-          })}
-        </tr>
-        </thead>
-        <tbody>
-        {this.state.scenarios.map(function(p, index) {
-          return (
-            <tr key={index}>
-              <td>{index}</td>
-              <td>{p.navname}</td>
-              <td>{p.fieldname}</td>
-              <td>{p.value}</td>
-              <td>{this.renderPopUpEdit(p)}</td>
-            </tr>
-          );
-        }.bind(this))}
-        </tbody>
-      </Table>
-    );
+          }.bind(this))}
+          </tbody>
+        </Table>
+      );
+    }
   }
 }
 

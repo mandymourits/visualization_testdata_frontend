@@ -4,99 +4,110 @@ import React from 'react';
 
 var base64 = require('base-64');
 
-  const getAllScenariosByName = async (url, scenario, isTest) => fetch(url + 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
+  const getAllScenariosByName = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getSharp = async (url, scenario, isTest) => fetch(url + 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
+  const getSharp = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getFile = async (url, filename) => fetch(url + 'scenario/file/' + filename,
+  const getFile = async ( filename) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/file/' + filename,
     {
       headers: {
+        'mode': 'cors',
         'Content-Type': 'application/octet-stream',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.blob());
 
-  const getUniqueNames = async (url) => fetch(url + 'scenario/getUniqueNames',
+  const getUniqueNames = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getUniqueNames',
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getNavItems = async (url, scenario, isTest) => fetch(url + 'scenario/getNavItems/' + scenario + '/' + isTest,
+  const getNavItems = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getNavItems/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getFieldNames = async (url, scenario, isTest) => fetch(url + 'scenario/getFieldNames/' + scenario + '/' + isTest,
+  const getFieldNames = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFieldNames/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getFrameWork = async (url) => fetch(url + 'scenario/getFieldNames',
+  const getFrameWork = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFieldNames',
     {
       headers: {
+        'mode': 'cors',
         'Access-Control-Allow-Origin': '*',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getById = async (url, id) => fetch(url + 'scenario/get/' + id,
+  const getById = async ( id) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/get/' + id,
     {
       headers: {
+        'mode': 'cors',
         'Access-Control-Allow-Origin': '*',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const postScenarioData = async (url, scenario, isTest) => fetch(url + 'scenario/getFramework/' + scenario + '/' + isTest,
+  const postScenarioData = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFramework/' + scenario + '/' + isTest,
     {
       method: 'GET',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const autoFill = async (url, pageName) => fetch(url + 'scenario/autofill/' + pageName,
+  const autoFill = async ( pageName) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/autofill/' + pageName,
     {
       method: 'GET',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const postScenarioData2 = async (url, data) => fetch(url + 'scenario/create',
+  const postScenarioData2 = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/create',
     {
       method: 'POST',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
@@ -104,10 +115,11 @@ var base64 = require('base-64');
       body: JSON.stringify(data),
     }).then(response => response.json());
 
-  const autoFillPageObjects = (url, data) => {
+  const autoFillPageObjects = ( data) => {
     const { timeout = 500000, ...rest } = {
       method: 'POST',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
@@ -123,36 +135,39 @@ var base64 = require('base-64');
         reject(new Error('Timeout for Promise'));
         controller.abort();
       }, timeout);
-      fetch(url + 'scenario/autoFillPageObjects', { signal, ...rest })
+      fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/autoFillPageObjects', { signal, ...rest })
         .finally(() => clearTimeout(timer))
         .then(resolve, reject);
     });
   };
 
-  const createUser = async (url, data) => fetch(url + 'users',
+  const createUser = async (data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'users',
     {
       method: 'POST',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(data),
     }).then(response => response.json());
 
-   const loginUser = (url, userName, passWord) => fetch(url,
+   const loginUser = (userName, passWord) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+'users'+'/token',
     {
       method: 'POST',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const editScenario = async (url, id, data) => fetch(url + 'scenario/edit/' + id,
+  const editScenario = async ( id, data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/edit/' + id,
     {
       method: 'PUT',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
@@ -160,36 +175,40 @@ var base64 = require('base-64');
       body: JSON.stringify(data),
     }).then(response => response);
 
-  const deleteScenario = async (url, data) => fetch(url + 'scenario/delete/' + data,
+  const deleteScenario = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/delete/' + data,
     {
       method: 'DELETE',
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response);
 
-  const getAllFrameworkDataByName = async (url, framework) => fetch(url + 'scenario/getAllFrameworkDataByName/' + framework + '',
+  const getAllFrameworkDataByName = async ( framework) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllFrameworkDataByName/' + framework + '',
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'application/json',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),
       },
     }).then(response => response.json());
 
-  const getFrameworkObjects = async (url, frameworktype, scenario, isTest) => fetch(url + 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
+  const getFrameworkObjects = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'text/plain',
       },
     }).then(response => response.text());
 
-  const getCucumberTest = async (url, frameworktype, scenario, isTest) => fetch(url + 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
+  const getCucumberTest = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
     {
       headers: {
+        'mode': 'cors',
         'Accept': 'application/json',
         'Content-Type': 'text/plain',
         'Authorization': 'Basic ' + base64.encode(sessionStorage.getItem('USERNAME') + ':' + sessionStorage.getItem('PASSWORD')),

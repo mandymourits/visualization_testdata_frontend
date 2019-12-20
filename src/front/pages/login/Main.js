@@ -1,13 +1,10 @@
 import React from 'react';
 import FileReader from 'filereader';
-import fs from 'fs';
 import TargetsSubPageHelp from './TargetsSubPageHelp';
 import TargetInputSubPageHelp from './TargetInputSubPageHelp';
 import TargetsInputSubpageHelp from './TargetsInputSubpageHelp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faJira } from '@fortawesome/free-brands-svg-icons';
-
-import { jira, faHome, faBriefcase, faPaperPlane, faQuestion, faImage, faCopy } from '@fortawesome/free-solid-svg-icons';
 import {
   getUniqueNames,
   getNavItems, getFieldNames, postScenarioData2, autoFill, autoFillPageObjects,
@@ -44,6 +41,15 @@ import { TargetObjects } from './TargetObjects';
 import classnames from 'classnames';
 import { HandleFramework } from './HeaderBar';
 import TargetsMainHelp from './TargetsMainHelp';
+import HelpPageobjects from '../about/helpPageobjects';
+import { Teststructurenavitems } from '../about/teststructurenavitems';
+import Helptestobjectsactions from '../about/helptestobjectsactions';
+import { TestStructurePageObjects } from '../about/teststructurepageobjects';
+import Helptestobjectsgoto from '../about/helptestobjectsgoto';
+import { Scenariostructure } from '../about/Scenariostructure';
+import HelpPage from '../about/helppage';
+import { Structure } from '../about/structure';
+import { StructureTest } from '../about/structuretest';
 
 class Main extends React.Component {
   constructor(props) {
@@ -70,7 +76,7 @@ class Main extends React.Component {
     this.handleNavItems = this.handleNavItems.bind(this);
     this.handlePageItems = this.handlePageItems.bind(this);
     this.handleSubmitTest = this.handleSubmitTest.bind(this);
-    this.uploadFile = this.uploadFile.bind(this);
+    this.uploadFile = this.uploadFile.bind(this)
     this.renderSomething = this.renderSomething.bind(this);
     this.renderGoTo = this.renderGoTo.bind(this);
     this.renderAction = this.renderAction.bind(this);
@@ -95,7 +101,6 @@ class Main extends React.Component {
     this.toggledropdownAccessType = this.toggledropdownAccessType.bind(this);
     this.handleTypesGenerationProcess = this.handleTypesGenerationProcess.bind(this);
     this.state = {
-      url: 'http://81.169.211.171:9009/',
       activeTab: '1',
       dropdownOpen: false,
       imageURL: '',
@@ -121,24 +126,24 @@ class Main extends React.Component {
       page: '',
       selector: '',
       type: null,
-      webElementTypes: [{ id: 1, typeName: 'id' }, { id: 2, typeName: 'css' },
+      webElementTypes: [{id: 1, typeName: 'id'}, {id: 2, typeName: 'css'},
       ],
-      types: [{ id: 1, typeName: 'input(id)' }, { id: 2, typeName: 'input(class)' }, {
+      types: [{id: 1, typeName: 'input(id)'}, {id: 2, typeName: 'input(class)'}, {
         id: 3,
         typeName: 'input(css)',
-      }, { id: 4, typeName: 'input(name)' }, { id: 5, typeName: 'input(xpath)' }, { id: 6, typeName: 'button(id)' }, {
+      }, {id: 4, typeName: 'input(name)'}, {id: 5, typeName: 'input(xpath)'}, {id: 6, typeName: 'button(id)'}, {
         id: 7,
         typeName: 'button(class)',
-      }, { id: 8, typeName: 'button(css)' }, { id: 9, typeName: 'button(name)' }, {
+      }, {id: 8, typeName: 'button(css)'}, {id: 9, typeName: 'button(name)'}, {
         id: 10,
         typeName: 'button(xpath)',
-      }, { id: 11, typeName: 'validateInput(id)' }, { id: 13, typeName: 'validateButton(id)' }, {
+      }, {id: 11, typeName: 'validateInput(id)'}, {id: 13, typeName: 'validateButton(id)'}, {
         id: 14,
         typeName: 'checkBox(id)',
-      }, { id: 15, typeName: 'option(id)' }, { id: 16, typeName: 'input(column,row)' }, {
+      }, {id: 15, typeName: 'option(id)'}, {id: 16, typeName: 'input(column,row)'}, {
         id: 17,
         typeName: 'validate(column,row)',
-      }, { id: 18, typeName: 'doubleClick(id)' }, { id: 19, typeName: 'dropDown(id)' }, {
+      }, {id: 18, typeName: 'doubleClick(id)'}, {id: 19, typeName: 'dropDown(id)'}, {
         id: 20,
         typeName: 'datePicker(id)',
       }],
@@ -162,11 +167,11 @@ class Main extends React.Component {
       prePage: '',
       dropdownOpenTools: false,
       splitButtonOpenTools: false,
-      toolSelectedPage: '',
-      splitButtonOpenAccessTypes: false,
-      dropdownOpenAccessType: false,
-      generateUrl: 'unKnown',
-      typeNameSelectors: '',
+      toolSelectedPage:'',
+      splitButtonOpenAccessTypes:false,
+      dropdownOpenAccessType:false,
+      generateUrl:'unKnown',
+      typeNameSelectors:'',
     };
   }
 
@@ -209,11 +214,11 @@ class Main extends React.Component {
     this.setState(data);
   }
 
-  handleChangeValue = e => this.setState({ pagename: e.target.value });
-  setFramework = e => this.setState({ pagename: e.target });
+  handleChangeValue = e => this.setState({pagename: e.target.value});
+  setFramework = e => this.setState({pagename: e.target});
 
   onDismiss() {
-    this.setState({ visible: false });
+    this.setState({visible: false});
   }
 
   handleInputChange(event) {
@@ -332,7 +337,7 @@ class Main extends React.Component {
   }
 
   changeValue(e) {
-    this.setState({ dropDownValue: e.currentTarget.textContent });
+    this.setState({dropDownValue: e.currentTarget.textContent});
     const value = e.currentTarget.getAttribute('pagename');
 
     this.setState({
@@ -341,7 +346,7 @@ class Main extends React.Component {
   }
 
   changeFrameworkValue(e) {
-    this.setState({ dropDownValue: e.currentTarget.textContent });
+    this.setState({dropDownValue: e.currentTarget.textContent});
     const framevalue = e.currentTarget.getAttribute('framevalue');
 
     this.setState({
@@ -358,8 +363,7 @@ class Main extends React.Component {
 
   initializeColumns() {
     this.setState({
-      // columns: ['#', 'Page', 'SubPage', 'SubPage Selector', 'Field Label', 'Field Name Selector', 'Type', 'Value'],
-      columns: ['#', 'Page', 'SubPage', 'SubPage Selector'],
+      columns: ['#', 'Page', 'SubPage', 'SubPage Selector', 'Field Label', 'Field Name Selector', 'Type', 'Value'],
       columnstests: ['#', 'SubPage', 'Field Label', 'Value'],
     });
   }
@@ -374,7 +378,7 @@ class Main extends React.Component {
 
   async getNavList() {
     if (this.state.pagename !== '') {
-      const dataSetCollection = await getNavItems(this.state.url, this.state.pagename, 'false');
+      const dataSetCollection = await getNavItems( this.state.pagename, 'false');
       this.setState({
         navItems: dataSetCollection,
       });
@@ -383,7 +387,7 @@ class Main extends React.Component {
 
   async getFieldList() {
     if (this.state.pagename !== '' && this.state.pagename !== null) {
-      const dataSetCollection = await getFieldNames(this.state.url, this.state.pagename, 'false');
+      const dataSetCollection = await getFieldNames( this.state.pagename, 'false');
       this.setState({
         pageObjectsNames: dataSetCollection,
       });
@@ -409,7 +413,7 @@ class Main extends React.Component {
       visible: true,
     });
     try {
-      let data = await postScenarioData2(this.state.url,
+      let data = await postScenarioData2(
         {
           istest: 'true',
           pagename: this.state.pagename,
@@ -485,7 +489,7 @@ class Main extends React.Component {
       visible: true,
     });
     try {
-      let data = await postScenarioData2(this.state.url,
+      let data = await postScenarioData2(
         {
           istest: 'false',
           pagename: this.state.pagename,
@@ -510,7 +514,7 @@ class Main extends React.Component {
     }
   }
 
-  async update(event) {
+  async update(event){
     this.state.url = event.target.value;
     await this.updateDropdown();
     await this.getNavList();
@@ -523,7 +527,7 @@ class Main extends React.Component {
   async autoFillObjects(event) {
     event.preventDefault();
     try {
-      let data = await autoFill(this.state.url, this.state.pagename);
+      let data = await autoFill( this.state.pagename);
       await this.updateTable();
     } catch (e) {
     }
@@ -535,7 +539,7 @@ class Main extends React.Component {
         istest: 'false',
         pagename: this.state.pagename,
         url: this.state.generateUrl,
-        selectors: this.state.selectors1 + '___' + this.state.selectors2 + '___' + this.state.selectors3,
+        selectors: this.state.selectors1 + "___" + this.state.selectors2 + "___" + this.state.selectors3,
         accessTypes: this.state.typeNameSelectors,
         pages: this.state.toolSelectedPage,
       };
@@ -543,13 +547,13 @@ class Main extends React.Component {
 
     event.preventDefault();
     try {
-      console.log('was here');
-      let data = await autoFillPageObjects(this.state.url,
+      console.log('was here')
+      let data = await autoFillPageObjects(
         {
           istest: 'false',
           pagename: this.state.pagename,
           url: this.state.generateUrl,
-          selectors: this.state.selectors1 + '___' + this.state.selectors2 + '___' + this.state.selectors3,
+          selectors: this.state.selectors1 + "___" + this.state.selectors2 + "___" + this.state.selectors3,
           accessTypes: this.state.typeNameSelectors,
         });
       await this.updateTable();
@@ -584,53 +588,36 @@ class Main extends React.Component {
     if (this.state.leftCard === 'true') {
       return (
         <div>
-          <Row>
-            <Col xs="4">
+          <Card>
+            <CardHeader color="link" icon="info" tag="h5">Target subpage
+              <Button className="float-right" type="switch" size="sm" name="leftCard" outline color="secondary"
+                      value={this.state.leftCard} onClick={this.toggleActiveCard}>Switch</Button>
+            </CardHeader>
+            <CardBody style={{backgroundColor: 'Light'}}>
               <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Create Path to Page
-                  <Button className="float-right" type="switch" size="sm" name="leftCard" outline color="secondary"
-                          value={this.state.leftCard} onClick={this.toggleActiveCard}>Switch</Button>
-                </CardHeader>
-                <CardBody style={{ backgroundColor: 'Light' }}>
-                  <br/>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend">@ Label&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
-                    <Input placeholder="Example: addProduct" name="navname"
-                           type="input"
-                           value={this.state.navname || ''}
-                           onChange={this.handleInputChange}/>
-                  </InputGroup>
-                  <br/>
-                  <InputGroup>
-                    <InputGroupAddon addonType="prepend">@ Selector</InputGroupAddon>
-                    <Input placeholder="Example: element[attribute='selector']" name="navnameselector"
-                           type="input"
-                           value={this.state.navnameselector || ''}
-                           onChange={this.handleInputChange}/>
-                  </InputGroup>
-                  <br/>
-                  <br/>
-                  <br/>
-                  <br/>
-                  <TargetsSubPageHelp name='A'/>
-                  <Button className="btn btn-default" type="submit"
-                          onClick={this.handleSubmitPageObjectModel}>Save</Button>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs="6">
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">@ Label&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
+                <Input placeholder="Example: addProduct" name="navname"
+                       type="input"
+                       value={this.state.navname || ''}
+                       onChange={this.handleInputChange}/>
+              </InputGroup>
               <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Submitted values</CardHeader>
-                <Table url={this.state.url} dataset={this.state.pagename} columns={this.state.columns}
-                       updateTableFromParent={this.updateTableFromChild}
-                       shouldUpdateTable={this.state.shouldUpdateTable}/>
-              </Card>
-            </Col>
-          </Row>
-        </div>
-      );
+              <InputGroup>
+                <InputGroupAddon addonType="prepend">@ Selector</InputGroupAddon>
+                <Input placeholder="Example: element[attribute='selector']" name="navnameselector"
+                       type="input"
+                       value={this.state.navnameselector || ''}
+                       onChange={this.handleInputChange}/>
+              </InputGroup>
+              <br/>
+              <br/>
+              <br/>
+              <br/>
+              <HelpPageobjects name='A'/>
+            </CardBody>
+          </Card>
+        </div>);
     }
   }
 
@@ -638,83 +625,69 @@ class Main extends React.Component {
     if (this.state.leftCard !== 'true') {
       return (
         <div>
-          <Row>
-            <Col xs="4">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Target objects
-                  <Button className="float-right" type="switch" size="sm" name="leftCard" outline color="secondary"
-                          value={this.state.leftCard} onClick={this.toggleActiveCard}>Switch</Button>
-                </CardHeader>
-                <CardBody style={{ backgroundColor: 'Light' }}>
-                  <form onSubmit={this.handleSubmitPageObjectModel}>
-                    <InputGroup style={{ width: '100%' }}>
-                      <InputGroupAddon addonType="prepend">
-                        <InputGroupText>
-                          <Input addon type="input" aria-label="type" value={this.state.typeName}/>
-                          <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.splitButtonOpen}
-                                                    toggle={this.toggleSplit}>
-                            <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
-                              <DropdownToggle caret>
-                                Choose Type
-                              </DropdownToggle>
-                              <DropdownMenu>
-                                {this.state.types.map(e => {
-                                  return <DropdownItem key={e.id}
-                                                       dataset={e.typeName}
-                                                       value={e.typeName}
-                                                       onClick={this.handleTypes}
-                                  >{e.typeName}
-                                  </DropdownItem>;
-                                })}
-                              </DropdownMenu>
-                            </ButtonDropdown>
-                          </InputGroupButtonDropdown>
-                        </InputGroupText>
-                      </InputGroupAddon>
-                    </InputGroup>
-                    <br/>
-                    <InputGroup style={{ width: '100%' }}>
-                      <InputGroupAddon addonType="prepend">@
-                        Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
-                      <Input placeholder="Example: Product Name" name="objectname" type="input"
-                             value={this.state.objectname}
-                             onChange={this.handleInputChange}/>
-                    </InputGroup>
-                    <br/>
-                    <InputGroup style={{ width: '100%' }}>
-                      <InputGroupAddon addonType="prepend">@
-                        Selector&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
-                      <Input placeholder="Example #button1" name="objectselector" type="input"
-                             value={this.state.objectselector}
-                             onChange={this.handleInputChange}/>
-                    </InputGroup>
-                    <br/>
-                    <InputGroup style={{ width: '100%' }}>
-                      <InputGroupAddon addonType="prepend">@
-                        Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
-                      <Input
-                        placeholder="Don't use if not necessary, target will be overridden by the target object variables."
-                        name="objectvalue"
-                        type="input"
-                        value={this.state.objectvalue}
-                        onChange={this.handleInputChange}/>
-                    </InputGroup>
-                  </form>
-                  <TargetsSubPageHelp name='B'/>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col xs="6">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Submitted values</CardHeader>
-                <Table url={this.state.url} dataset={this.state.pagename} columns={this.state.columns}
-                       updateTableFromParent={this.updateTableFromChild}
-                       shouldUpdateTable={this.state.shouldUpdateTable}/>
-              </Card>
-            </Col>
-          </Row>
+          <Card>
+            <CardHeader color="link" icon="info" tag="h5">Target objects
+              <Button className="float-right" type="switch" size="sm" name="leftCard" outline color="secondary"
+                      value={this.state.leftCard} onClick={this.toggleActiveCard}>Switch</Button>
+            </CardHeader>
+            <CardBody style={{backgroundColor: 'Light'}}>
+              <form onSubmit={this.handleSubmitPageObjectModel}>
+                <InputGroup style={{width: '100%'}}>
+                  <InputGroupAddon addonType="prepend">
+                    <InputGroupText>
+                      <Input addon type="input" aria-label="type" value={this.state.typeName}/>
+                      <InputGroupButtonDropdown addonType="prepend" isOpen={this.state.splitButtonOpen}
+                                                toggle={this.toggleSplit}>
+                        <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
+                          <DropdownToggle caret>
+                            Choose Type
+                          </DropdownToggle>
+                          <DropdownMenu>
+                            {this.state.types.map(e => {
+                              return <DropdownItem key={e.id}
+                                                   dataset={e.typeName}
+                                                   value={e.typeName}
+                                                   onClick={this.handleTypes}
+                              >{e.typeName}
+                              </DropdownItem>;
+                            })}
+                          </DropdownMenu>
+                        </ButtonDropdown>
+                      </InputGroupButtonDropdown>
+                    </InputGroupText>
+                  </InputGroupAddon>
+                </InputGroup>
+                <br/>
+                <InputGroup style={{width: '100%'}}>
+                  <InputGroupAddon addonType="prepend">@
+                    Field&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
+                  <Input placeholder="Example: Product Name" name="objectname" type="input"
+                         value={this.state.objectname}
+                         onChange={this.handleInputChange}/>
+                </InputGroup>
+                <br/>
+                <InputGroup style={{width: '100%'}}>
+                  <InputGroupAddon addonType="prepend">@
+                    Selector&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
+                  <Input placeholder="Example #button1" name="objectselector" type="input"
+                         value={this.state.objectselector}
+                         onChange={this.handleInputChange}/>
+                </InputGroup>
+                <br/>
+                <InputGroup style={{width: '100%'}}>
+                  <InputGroupAddon addonType="prepend">@
+                    Value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</InputGroupAddon>
+                  <Input
+                    placeholder="Don't use if not necessary, target will be overridden by the target object variables."
+                    name="objectvalue"
+                    type="input"
+                    value={this.state.objectvalue}
+                    onChange={this.handleInputChange}/>
+                </InputGroup>
+              </form>
+              <HelpPageobjects name='B'/>
+            </CardBody>
+          </Card>
         </div>);
     }
   }
@@ -722,80 +695,49 @@ class Main extends React.Component {
   renderGoToTest(prop) {
     if (this.state.leftCardTest === 'true') {
       return (
-        <div>
-          <Row>
-            <Col sm="4">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Create Path to Page
-                  <Button className="float-right" type="switch" size="sm" name="leftCardTest" outline color="secondary"
-                          value={this.state.leftCardTest} onClick={this.toggleActiveCardTest}>Switch</Button>
-                </CardHeader>
-                <CardBody style={{ backgroundColor: 'Light' }}>
-                  <TargetInputSubPages url={this.state.url} navItems={this.state.navItems}
-                                       handlerFromParent={this.handleNavItems}/>
-                  <TargetInputSubPageHelp/>
-                  <Button className="btn btn-default" color="warning" type="submit"
-                          onClick={this.autoFillObjects}>Autofill</Button>{' '}
-                </CardBody>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Submitted Values
-                </CardHeader>
-                <TableTests url={this.state.url} dataset={this.state.pagename} columns={this.state.columnstests}
-                            updateTableFromParent={this.updateTableFromChild}
-                            shouldUpdateTable={this.state.shouldUpdateTable}/>
-              </Card>
-            </Col>
-          </Row>
-        </div>);
+        <Card>
+          <CardHeader color="link" icon="info" tag="h5">Target subpage
+            <Button className="float-right" type="switch" size="sm" name="leftCardTest" outline color="secondary"
+                    value={this.state.leftCardTest} onClick={this.toggleActiveCardTest}>Switch</Button>
+          </CardHeader>
+          <CardBody style={{backgroundColor: 'Light'}}>
+            <Teststructurenavitems  navItems={this.state.navItems}
+                                   handlerFromParent={this.handleNavItems}/>
+            <br/>
+            <br/>
+            <br/>
+            <Helptestobjectsactions/>
+            <br/>
+          </CardBody>
+        </Card>);
     }
   }
 
   renderActionTest(prop) {
     if (this.state.leftCardTest !== 'true') {
-      return (
-        <div>
-          <Row>
-            <Col sm="4">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Target object variables
-                  <Button className="float-right" type="switch" size="sm" name="leftCardTest" outline color="secondary"
-                          value={this.state.leftCardTest} onClick={this.toggleActiveCardTest}>Switch</Button>
-                </CardHeader>
-                <CardBody style={{ backgroundColor: 'Light' }}>
-                  <InputGroup style={{ width: '100%' }}>
-                  </InputGroup>
-                  <InputGroup style={{ width: '100%', padding: '10px' }}>
-                    <TargetObjects url={this.state.url}
-                                   pageObjectsNames={this.state.pageObjectsNames}
-                                   handlerFromParant={this.handlePageItems}/>
-                  </InputGroup>
-                  <TargetsInputSubpageHelp/>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col sm="6">
-              <br/>
-              <Card>
-                <CardHeader color="link" icon="info" tag="h5">Target subpage
-                </CardHeader>
-                <TableTests url={this.state.url} dataset={this.state.pagename} columns={this.state.columnstests}
-                            updateTableFromParent={this.updateTableFromChild}
-                            shouldUpdateTable={this.state.shouldUpdateTable}/>
-              </Card>
-            </Col></Row></div>);
+      return (<Card>
+        <CardHeader color="link" icon="info" tag="h5">Target object variables
+          <Button className="float-right" type="switch" size="sm" name="leftCardTest" outline color="secondary"
+                  value={this.state.leftCardTest} onClick={this.toggleActiveCardTest}>Switch</Button>
+        </CardHeader>
+        <CardBody style={{backgroundColor: 'Light'}}>
+          <InputGroup style={{width: '100%'}}>
+          </InputGroup>
+          <InputGroup style={{width: '100%', padding: '10px'}}>
+            <TestStructurePageObjects
+                                      pageObjectsNames={this.state.pageObjectsNames}
+                                      handlerFromParant={this.handlePageItems}/>
+          </InputGroup>
+          <Helptestobjectsgoto/>
+        </CardBody>
+      </Card>);
     }
   }
 
   render() {
     return (
       <div>
-        <HandleFramework url={this.state.url}
+        <HandleFramework
                          datasets={this.state.actions}
                          handlerFromParant={this.handleData} name="pagename"/>
         <br/>
@@ -805,34 +747,19 @@ class Main extends React.Component {
             value {this.state.value} to {this.state.name}
           </Alert>
         </div>
-        <Card>
-          <CardHeader body inverse color="warning" tag="h5">Global Settings <FontAwesomeIcon icon={faJira} className="mr-lg-n1" size="2x" pull="right"/></CardHeader>
-          <CardBody style={{ backgroundColor: 'Dark' }}>
-            <br/>
-            <TargetsMain url={this.state.url}
-                         datasets={this.state.actions}
-                         handlerFromParant={this.handleData} handlerFromParant1={this.handleTabFromChild}
-                         name="pagename" handlerFromParent2={this.updateTable}/>
-            <br/>
-            <InputGroup>
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <Button className="btn btn-default" name="renderSomething" value="true"
-                          onClick={this.handleInputChange}
-                          type="submit">Add</Button>
-                  {this.renderSomething()}
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
-            <br/>
-            <TargetsMainHelp name='E'/>
-          </CardBody>
-        </Card>
-        <br/>
         <Nav tabs>
           <NavItem>
             <NavLink
-              className={classnames({ active: this.state.activeTab === '2' })}
+              className={classnames({active: this.state.activeTab === '1'})}
+              onClick={() => {
+                this.toggle('1');
+              }}
+            >Start
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink
+              className={classnames({active: this.state.activeTab === '2'})}
               onClick={() => {
                 this.toggle('2');
               }} disabled={!this.state.selectedPage}>Target
@@ -865,27 +792,93 @@ class Main extends React.Component {
             </NavLink>
           </NavItem>
         </Nav>
-        <br/>
-        <br/>
         <TabContent activeTab={this.state.activeTab}>
           <TabPane tabId="2">
-            {this.renderGoTo()}
-            {this.renderAction()}
+            <Row>
+              <Col sm="6">
+                <div>
+                  <br/>
+                </div>
+                <br/>
+                {this.renderGoTo()}
+                {this.renderAction()}
+                <br/>
+                <Button className="btn btn-default" type="submit"
+                        onClick={this.handleSubmitPageObjectModel}>Save</Button>
+                <br/>
+              </Col>
+              <br/>
+            </Row>
             <br/>
-            <br/>
-            <br/>
+            <Table  dataset={this.state.pagename} columns={this.state.columns}
+                   updateTableFromParent={this.updateTableFromChild} shouldUpdateTable={this.state.shouldUpdateTable}/>
           </TabPane>
           <br/>
+          <TabPane tabId="1">
+            <Row>
+              <Col sm="6">
+                <br/>
+                <Card>
+                  <CardHeader tag="h5">Page</CardHeader>
+                  <CardBody style={{backgroundColor: 'Light'}}>
+                    <InputGroup>
+                      <Input addon type="" aria-label="type" name= "url" value={this.state.url} onChange={this.handleInputChange}/>
+                      <Button className="float-right" type="switch" value={this.state.url} outline color="secondary"
+                              onClick={this.update}>Submit</Button>
+                    </InputGroup>
+                    <br/>
+                    <Scenariostructure
+                                       datasets={this.state.actions}
+                                       handlerFromParant={this.handleData} handlerFromParant1={this.handleTabFromChild}
+                                       name="pagename" handlerFromParent2={this.updateTable}/>
+                    <br/>
+                    <InputGroup>
+                      <InputGroupAddon addonType="prepend">
+                        <InputGroupText>
+                          <Button className="btn btn-default" name="renderSomething" value="true"
+                                  onClick={this.handleInputChange}
+                                  type="submit">Add</Button>
+                          {this.renderSomething()}
+                        </InputGroupText>
+                      </InputGroupAddon>
+                    </InputGroup>
+                    <br/>
+                    <HelpPage name='E'/>
+                  </CardBody>
+                </Card>
+                <br/>
+                <Button className="btn btn-default" name="activeTab" value="2" onClick={this.handleInputChange}
+                        type="submit">Submit</Button>
+              </Col>
+            </Row>
+          </TabPane>
           <TabPane
             tabId="4">
-            {this.renderGoToTest('C')}
-            {this.renderActionTest('D')}
+            <Row>
+              <Col sm="6">
+                <br/>
+                {this.renderGoToTest('C')}
+                {this.renderActionTest('D')}
+              </Col>
+              <br/>
+            </Row>
+            <br/>
+            <Button className="btn btn-default" color="warning" type="submit"
+                    onClick={this.autoFillObjects}>Autofill</Button>{' '}
+            <Button className="btn btn-default" type="submit" onClick={this.handleSubmitTest}>Save</Button>
+            <br/>
+            <br/>
+            <TableTests  dataset={this.state.pagename} columns={this.state.columnstests}
+                        updateTableFromParent={this.updateTableFromChild}
+                        shouldUpdateTable={this.state.shouldUpdateTable}/>
           </TabPane>
           <TabPane tabId="3">
+            <Structure  datasets={this.state.actions}
+                       handlerFromParant={this.handleData} name="pagename"/>
           </TabPane>
           <TabPane tabId="5">
-            <CreateCucumberFile url={this.state.url} datasets={this.state.actions}
-                                handlerFromParant={this.handleData} name="pagename"/>
+            <StructureTest  datasets={this.state.actions}
+                           handlerFromParant={this.handleData} name="pagename"/>
           </TabPane>
         </TabContent>
         <br/>
