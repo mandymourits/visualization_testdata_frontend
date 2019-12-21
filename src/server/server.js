@@ -5,6 +5,7 @@ const express = require('express');
 const PrettyError = require('pretty-error');
 const expressServer = require('./lib/expressServer');
 const config = require('./config');
+const port = process.env.PORT || 8080;
 // #endregion
 
 // #region constants
@@ -17,6 +18,7 @@ try {
 
   const app = express();
   expressServer(app, dev);
+  app.listen(port);
 } catch (error) {
   console.log('server error: ', error);
 }
