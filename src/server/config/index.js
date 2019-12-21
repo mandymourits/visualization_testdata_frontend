@@ -33,7 +33,7 @@ const config = convict({
 });
 
 const env = config.get('env');
-config.loadFile(path.join(__dirname, `./${env}.json`));
+config.loadFile(path.join(__dirname, './production.json'));
 config.validate();
 
 module.exports = config;
