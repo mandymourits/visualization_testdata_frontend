@@ -18,7 +18,6 @@ try {
 
   const app = express();
   expressServer(app, dev);
-  app.listen(port);
 } catch (error) {
   console.log('server error: ', error);
 }
