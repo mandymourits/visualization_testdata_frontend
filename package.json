@@ -18,7 +18,7 @@
     "yarn": ">=1.17.0"
   },
   "scripts": {
-    "start": "npm run prod-static && node ./src/server/server.js"
+    "start": "node ./src/server/server.js"
   },
   "reactSnap": {
     "source": "docs"
