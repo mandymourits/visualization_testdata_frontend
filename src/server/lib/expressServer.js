@@ -34,6 +34,7 @@ const expressServer = (app = null, isDev = false) => {
     res.sendFile(path.join(__dirname, DOCS_PATH, 'index.html')),
   );
 
+
   app.use(error404);
   app.use(error500);
 
