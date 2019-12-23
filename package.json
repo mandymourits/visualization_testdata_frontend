@@ -20,14 +20,14 @@
   "scripts": {
     "flow": "node_modules/.bin/flow",
     "test": "cross-env NODE_ENV=test jest",
-    "test:coverage": "cross-env NODE_ENV=test jest --coverage",
+    "test:coverage": "jest --coverage",
     "clean-docs": "rimraf docs/*",
     "prepare:index-html": "node ./scripts/prepareIndexHtml.js",
     "predev": "npm run clean-docs",
-    "dev": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
+    "dev": "webpack --config webpack.dev.config.js",
     "postdev": "react-snap",
     "predev-static": "rimraf docs/* &&  node ./scripts/prepareIndexHtml.js",
-    "dev-static": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
+    "dev-static": "webpack --config webpack.dev.config.js",
     "preprod": "npm run clean-docs",
     "prod": "webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
@@ -233,7 +233,8 @@
     "webpack-hot-middleware": "^2.22.1",
     "webpack-node-externals": "^1.7.2",
     "webpack-require-from": "^1.3.1",
-    "workbox-webpack-plugin": "^3.4.1"
+    "workbox-webpack-plugin": "^3.4.1",
+    "progress-bar-webpack-plugin": "^1.11.0",
   },
   "jest": {
     "roots": [

@@ -17,7 +17,7 @@ const srcInclude = path.join(__dirname, 'src/front');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 // #endregion
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3002;
 
 const config = {
   mode: 'development',
