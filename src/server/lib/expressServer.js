@@ -38,7 +38,7 @@ const expressServer = (app = null, isDev = false) => {
   app.use(error500);
 
   /* eslint-disable no-console */
-  app.listen(server_port, server_host, () =>
+  app.listen(process.env.PORT, '0.0.0.0', () =>
     console.log(`
         =====================================================
         -> Server (${chalk.bgBlue('SPA')}) 🏃 (running) on ${chalk.green(
