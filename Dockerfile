@@ -1,8 +1,6 @@
 FROM node:latest
 
-EXPOSE 8082
-
-RUN npm install -g yarn
+EXPOSE 8081
 
 # Update aptitude with new repo
 RUN apt-get update
@@ -22,10 +20,11 @@ RUN  apt-get update \
      && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p ~/app
+WORKDIR /app
 COPY . .
+RUN ls -a
 
-WORKDIR /app/frontend
-RUN yarn install
-RUN yarn --no-lockfile
-RUN yarn add puppeteer
-RUN yarn run serve-dev
+RUN npm install
+RUN npm install cross-env -g
+RUN npm install puppeteer
+CMD [ "npm","run","serve-prod-static" ]

@@ -1,6 +1,6 @@
 {
   "server": {
-    "port": 5001,
+    "port": 8081,
     "apiEndPoint": "https://virtualizationtoolbackend.herokuapp.com"
   }
 }
