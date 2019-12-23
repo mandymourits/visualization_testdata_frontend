@@ -17,6 +17,8 @@ const srcInclude = path.join(__dirname, 'src/front');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 // #endregion
 
+const port = process.env.PORT || 3001;
+
 const config = {
   mode: 'development',
   node: {
@@ -102,7 +104,7 @@ const config = {
   ],
   devServer: {
     contentBase: devServerRootPath,
-    port: 3001,
+    port: port,
     hot: true,
     historyApiFallback: true,
   },
