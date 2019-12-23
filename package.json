@@ -29,7 +29,7 @@
     "predev-static": "rimraf docs/* &&  node ./scripts/prepareIndexHtml.js",
     "dev-static": "cross-env NODE_ENV=dev webpack --config webpack.dev.config.js",
     "preprod": "npm run clean-docs",
-    "prod": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
+    "prod": "webpack -p --config webpack.production.config.js",
     "postprod": "react-snap",
     "preprod-static": "npm run clean-docs",
     "prod-static": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
@@ -224,7 +224,16 @@
     "serialize-javascript": "^2.1.2",
     "serve-favicon": "^2.5.0",
     "smoothscroll-polyfill": "^0.4.3",
-    "styled-components": "^3.2.6"
+    "styled-components": "^3.2.6",
+    "webpack": "^4.6.0",
+    "webpack-bundle-analyzer": "^3.5.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-dev-server": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.1",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-require-from": "^1.3.1",
+    "workbox-webpack-plugin": "^3.4.1"
   },
   "jest": {
     "roots": [
