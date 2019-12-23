@@ -16,8 +16,12 @@ const pe = new PrettyError();
 try {
   pe.start();
 
+  dev.server.port = port;
   const app = express();
-  app.listen(port);
+
+  app.listen(port, function () {
+    console.log('Example app listening on port !');
+  });
   expressServer(app, dev);
 } catch (error) {
   console.log('server error: ', error);
