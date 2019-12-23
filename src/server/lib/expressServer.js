@@ -19,8 +19,11 @@ const expressServer = (app = null, isDev = false) => {
     throw new Error('Server application instance is undefined');
   }
 
-  app.set('port', config.get('server.port'));
-  app.set('ipAdress', config.get('server.host'));
+  var server_port = process.env.PORT;
+  var server_host = '0.0.0.0';
+
+  app.set('port', server_port);
+  app.set('ipAdress', server_host);
 
   app.use(
     '/assets',
@@ -35,12 +38,12 @@ const expressServer = (app = null, isDev = false) => {
   app.use(error500);
 
   /* eslint-disable no-console */
-  app.listen(config.get('server.port'), config.get('server.host'), () =>
+  app.listen(server_port, server_host, () =>
     console.log(`
         =====================================================
         -> Server (${chalk.bgBlue('SPA')}) 🏃 (running) on ${chalk.green(
-      config.get('server.host'),
-    )}:${chalk.green(config.get('server.port'))}
+      config.get(server_host),
+    )}:${chalk.green(server_port)}
         =====================================================
       `),
   );
