@@ -33,10 +33,8 @@ const config = {
     },
   },
   output: {
-    path: outputPath,
-    publicPath,
-    filename: '[name].[hash].js',
-    chunkFilename: '[name].[hash].js',
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
@@ -108,7 +106,7 @@ const config = {
       },
     }),
     new CompressionWebpackPlugin({
-      asset: '[path].gz[query]',
+      cache: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp('\\.(js|css)$'),
       threshold: 10240,
