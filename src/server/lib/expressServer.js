@@ -38,17 +38,21 @@ const expressServer = (app = null, isDev = false) => {
   app.use(error404);
   app.use(error500);
 
-  /* eslint-disable no-console */
-  app.listen(process.env.PORT, '0.0.0.0', () =>
-    console.log(`
-        =====================================================
-        -> Server (${chalk.bgBlue('SPA')}) 🏃 (running) on ${chalk.green(
-      config.get(server_host),
-    )}:${chalk.green(server_port)}
-        =====================================================
-      `),
-  );
-  /* eslint-enable no-console */
+  app.listen(process.env.PORT, function() {
+    console.log('Our app is running on http://localhost:' + process.env.PORT);
+  });
+
+  // /* eslint-disable no-console */
+  // app.listen(process.env.PORT, '0.0.0.0', () =>
+  //   console.log(`
+  //       =====================================================
+  //       -> Server (${chalk.bgBlue('SPA')}) 🏃 (running) on ${chalk.green(
+  //     config.get(server_host),
+  //   )}:${chalk.green(server_port)}
+  //       =====================================================
+  //     `),
+  // );
+  // /* eslint-enable no-console */
 
   return app;
 };
