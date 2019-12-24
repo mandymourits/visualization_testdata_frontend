@@ -1,6 +1,4 @@
 import React from 'react';
-import FileReader from 'filereader';
-import fs from 'fs';
 import {
   createUser,
 } from '../../services/API/Api';
