@@ -23,6 +23,10 @@ const config = {
   entry: {
     app: indexFile,
   },
+  externals:{
+    fs:    'commonjs fs',
+    path:  'commonjs path',
+  },
   resolve: {
     modules: ['src/front', 'node_modules'],
     extensions: ['.js', 'jsx'],

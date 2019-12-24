@@ -31,6 +31,10 @@ const config = {
       'react-dom': '@hot-loader/react-dom',
     },
   },
+  externals:{
+    fs:    'commonjs fs',
+    path:  'commonjs path',
+  },
   output: {
     path: outputPath,
     publicPath,
