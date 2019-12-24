@@ -47,7 +47,7 @@ const config = {
         test: /\.jsx?$/,
         include: srcInclude,
         exclude: [nodeModulesDir],
-        loaders: ['babel-loader'],
+        loader: ['babel-loader'],
       },
       {
         test: /\.css$/,
