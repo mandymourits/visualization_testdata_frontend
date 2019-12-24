@@ -18,9 +18,6 @@ const indexFile = path.join(__dirname, 'src/front/index.js');
 
 const config = {
   mode: 'development',
-  node: {
-    fs: 'empty',
-  },
   devtool: 'source-map',
   target: 'web',
   entry: {

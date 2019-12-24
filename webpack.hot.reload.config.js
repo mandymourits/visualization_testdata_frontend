@@ -21,9 +21,6 @@ const port = process.env.PORT || 3001;
 
 const config = {
   mode: 'development',
-  node: {
-    fs: 'empty',
-  },
   devtool: 'cheap-module-source-map',
   entry: {
     app: ['react-hot-loader/patch', indexFile],
