@@ -30,16 +30,18 @@ const expressServer = (app = null, isDev = false) => {
     express.static(path.join(__dirname, DOCS_PATH, 'assets/')),
   );
 
-  app.get('/*', (req, res) =>
-    res.sendFile(path.join(__dirname, DOCS_PATH, 'index.html')),
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, DOCS_PATH, 'index.html'),
+  res.redirect('/about'),
+),
   );
 
   app.use(error404);
   app.use(error500);
 
-  app.listen(process.env.PORT,'0.0.0.0',function(){
+  app.listen(server_port,server_host,function(){
     console.log('app running on ' + process.env.PORT)
-  })
+  });
 
   // /* eslint-disable no-console */
   // app.listen(process.env.PORT, '0.0.0.0', () =>
