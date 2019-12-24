@@ -33,8 +33,10 @@ const config = {
     },
   },
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: outputPath,
+    publicPath,
+    filename: '[name].[hash].js',
+    chunkFilename: '[name].[hash].js',
   },
   module: {
     rules: [
