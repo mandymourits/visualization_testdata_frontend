@@ -35,11 +35,12 @@
     "prod-static": "cross-env NODE_ENV=production webpack -p --config webpack.production.config.js",
     "analyze": "rimraf docs/assets && cross-env NODE_ENV=production webpack -p --config webpack.analyze.config.js",
     "prestart": "npm run clean-docs && npm run prepare:index-html",
-    "start": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
+    "startold": "cross-env NODE_ENV=dev webpack-dev-server --config ./webpack.hot.reload.config.js --mode development",
+    "start": "npm run prod-static && node ./src/server/server.js",
     "serve-dev": "npm run dev && nodemon ./src/server/server.js",
     "serve-prod": "npm run prod && node ./src/server/server.js",
     "serve-dev-static": "npm run dev-static && nodemon ./src/server/server.js",
-    "serve-prod-static": "yarn run prod-static && node ./src/server/server.js"
+    "serve-prod-static": "npm run prod-static && node ./src/server/server.js"
   },
   "reactSnap": {
     "source": "docs"
