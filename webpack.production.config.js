@@ -12,6 +12,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 // #endregion
 
+var server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
+var server_host = process.env.YOUR_HOST || '0.0.0.0';
+
 // #region constants
 const outputPath = path.join(__dirname, 'docs/assets');
 const publicPath = '/assets/';
@@ -32,6 +35,10 @@ const config = {
   externals:{
     fs:    'commonjs fs',
     path:  'commonjs path',
+  },
+  node: {
+    fs:
+      'empty',
   },
   output: {
     path: outputPath,
@@ -105,7 +112,7 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        NODE_ENV: server_port,
       },
     }),
     new CompressionWebpackPlugin({
