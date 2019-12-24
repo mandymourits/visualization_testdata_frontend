@@ -1,6 +1,5 @@
 import React from 'react';
 import FileReader from 'filereader';
-import fs from 'fs';
 import HelpPageobjects from './helpPageobjects';
 import Helptestobjectsactions from './helptestobjectsactions'
 import Helptestobjectsgoto from './helptestobjectsgoto'
