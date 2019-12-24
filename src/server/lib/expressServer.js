@@ -33,14 +33,12 @@ const expressServer = (app = null, isDev = false) => {
   app.get('/*', (req, res) =>
     res.sendFile(path.join(__dirname, DOCS_PATH, 'index.html')),
   );
-  
+
   app.use(error404);
   app.use(error500);
 
   app.listen(process.env.PORT,'0.0.0.0',function(){
-    app.close(function(){
-      app.listen(process.env.PORT,'0.0.0.0')
-    })
+    console.log('app running on ' + process.env.PORT)
   })
 
   // /* eslint-disable no-console */
