@@ -1,5 +1,3 @@
 build:
   docker:
-    web: ./Dockerfile.heroku.heroku
-run:
-  web: serve -l $PORT
+    web: Dockerfile
