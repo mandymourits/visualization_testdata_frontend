@@ -12,9 +12,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ModernizrWebpackPlugin = require('modernizr-webpack-plugin');
 // #endregion
 
-var server_port = process.env.YOUR_PORT || process.env.PORT || 5000;
-var server_host = process.env.YOUR_HOST || '0.0.0.0';
-
 // #region constants
 const outputPath = path.join(__dirname, 'docs/assets');
 const publicPath = '/assets/';
@@ -24,6 +21,9 @@ const indexFile = path.join(__dirname, 'src/front/index.js');
 
 const config = {
   mode: 'production',
+  node: {
+    fs: 'empty',
+  },
   entry: { app: indexFile },
   resolve: {
     modules: ['src/front', 'node_modules'],
@@ -31,14 +31,6 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
-  },
-  externals:{
-    fs:    'commonjs fs',
-    path:  'commonjs path',
-  },
-  node: {
-    fs:
-      'empty',
   },
   output: {
     path: outputPath,
@@ -112,11 +104,11 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: server_port,
+        NODE_ENV: JSON.stringify('production'),
       },
     }),
     new CompressionWebpackPlugin({
-      cache: '[path].gz[query]',
+      include: '[path].gz[query]',
       algorithm: 'gzip',
       test: new RegExp('\\.(js|css)$'),
       threshold: 10240,

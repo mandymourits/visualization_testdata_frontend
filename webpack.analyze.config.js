@@ -23,6 +23,9 @@ const indexFile = path.join(__dirname, 'src/front/index.js');
 
 const config = {
   mode: 'production',
+  node: {
+    fs: 'empty',
+  },
   entry: { app: indexFile },
   resolve: {
     modules: ['src/front', 'node_modules'],
@@ -30,10 +33,6 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
-  },
-  externals:{
-    fs:    'commonjs fs',
-    path:  'commonjs path',
   },
   output: {
     path: outputPath,

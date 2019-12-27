@@ -11,8 +11,10 @@ const config = require('./config');
 const dev = config.get('env') !== 'production';
 const pe = new PrettyError();
 // #endregion
+
 try {
   pe.start();
+
   const app = express();
   expressServer(app, dev);
 } catch (error) {

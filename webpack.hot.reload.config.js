@@ -17,10 +17,11 @@ const srcInclude = path.join(__dirname, 'src/front');
 const indexFile = path.join(__dirname, 'src/front/index.js');
 // #endregion
 
-const port = process.env.PORT || 3001;
-
 const config = {
   mode: 'development',
+  node: {
+    fs: 'empty',
+  },
   devtool: 'cheap-module-source-map',
   entry: {
     app: ['react-hot-loader/patch', indexFile],
@@ -31,10 +32,6 @@ const config = {
     alias: {
       'react-dom': '@hot-loader/react-dom',
     },
-  },
-  externals:{
-    fs:    'commonjs fs',
-    path:  'commonjs path',
   },
   output: {
     path: outputPath,
@@ -48,7 +45,7 @@ const config = {
         test: /\.jsx?$/,
         include: srcInclude,
         exclude: [nodeModulesDir],
-        loader: ['babel-loader'],
+        loaders: ['babel-loader'],
       },
       {
         test: /\.css$/,

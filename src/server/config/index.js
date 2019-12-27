@@ -34,6 +34,6 @@ const config = convict({
 
 const env = config.get('env');
 config.loadFile(path.join(__dirname, `./${env}.json`));
-// config.validate();
+config.validate();
 
 module.exports = config;

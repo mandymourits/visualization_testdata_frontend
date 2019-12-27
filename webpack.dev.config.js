@@ -18,14 +18,13 @@ const indexFile = path.join(__dirname, 'src/front/index.js');
 
 const config = {
   mode: 'development',
+  node: {
+    fs: 'empty',
+  },
   devtool: 'source-map',
   target: 'web',
   entry: {
     app: indexFile,
-  },
-  externals:{
-    fs:    'commonjs fs',
-    path:  'commonjs path',
   },
   resolve: {
     modules: ['src/front', 'node_modules'],
