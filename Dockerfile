@@ -1,5 +1,6 @@
 FROM nginx:1.15
 
+COPY . .
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 WORKDIR /usr/share/nginx/html
 RUN ls -a
