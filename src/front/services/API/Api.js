@@ -1,8 +1,8 @@
 // TODO: IP adresses
 const fetch = require('node-fetch');
 import React from 'react';
-const dotenv = require('dotenv');
-const ENDPOINT = process.env.ENDPOINT || 'https://localhost:9009/';
+require('dotenv').config();
+const ENDPOINT = process.env.ENDPOINT;
 
 var base64 = require('base-64');
 
