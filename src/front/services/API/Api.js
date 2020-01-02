@@ -1,10 +1,11 @@
 // TODO: IP adresses
 const fetch = require('node-fetch');
 import React from 'react';
+const ENDPOINT = process.env.ENDPOINT || 'http://localhost:9009';
 
 var base64 = require('base-64');
 
-  const getAllScenariosByName = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
+  const getAllScenariosByName = async ( scenario, isTest) => fetch(ENDPOINT + 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
@@ -14,7 +15,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getSharp = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
+  const getSharp = async ( scenario, isTest) => fetch(ENDPOINT + 'scenario/getAllScenariosByName/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
@@ -24,7 +25,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getFile = async ( filename) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/file/' + filename,
+  const getFile = async ( filename) => fetch(ENDPOINT + 'scenario/file/' + filename,
     {
       headers: {
         'mode': 'cors',
@@ -33,7 +34,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.blob());
 
-  const getUniqueNames = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getUniqueNames',
+  const getUniqueNames = async (url) => fetch(ENDPOINT + 'scenario/getUniqueNames',
     {
       headers: {
         'mode': 'cors',
@@ -43,7 +44,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getNavItems = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getNavItems/' + scenario + '/' + isTest,
+  const getNavItems = async ( scenario, isTest) => fetch(ENDPOINT + 'scenario/getNavItems/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
@@ -53,7 +54,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getFieldNames = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFieldNames/' + scenario + '/' + isTest,
+  const getFieldNames = async ( scenario, isTest) => fetch(ENDPOINT + 'scenario/getFieldNames/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
@@ -63,7 +64,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getFrameWork = async (url) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFieldNames',
+  const getFrameWork = async (url) => fetch(ENDPOINT + 'scenario/getFieldNames',
     {
       headers: {
         'mode': 'cors',
@@ -72,7 +73,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getById = async ( id) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/get/' + id,
+  const getById = async ( id) => fetch(ENDPOINT + 'scenario/get/' + id,
     {
       headers: {
         'mode': 'cors',
@@ -81,7 +82,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const postScenarioData = async ( scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getFramework/' + scenario + '/' + isTest,
+  const postScenarioData = async ( scenario, isTest) => fetch(ENDPOINT + 'scenario/getFramework/' + scenario + '/' + isTest,
     {
       method: 'GET',
       headers: {
@@ -92,7 +93,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const autoFill = async ( pageName) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/autofill/' + pageName,
+  const autoFill = async ( pageName) => fetch(ENDPOINT + 'scenario/autofill/' + pageName,
     {
       method: 'GET',
       headers: {
@@ -103,7 +104,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const postScenarioData2 = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/create',
+  const postScenarioData2 = async ( data) => fetch(ENDPOINT + 'scenario/create',
     {
       method: 'POST',
       headers: {
@@ -135,13 +136,13 @@ var base64 = require('base-64');
         reject(new Error('Timeout for Promise'));
         controller.abort();
       }, timeout);
-      fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/autoFillPageObjects', { signal, ...rest })
+      fetch(ENDPOINT+ 'scenario/autoFillPageObjects', { signal, ...rest })
         .finally(() => clearTimeout(timer))
         .then(resolve, reject);
     });
   };
 
-  const createUser = async (data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'users',
+  const createUser = async (data) => fetch(ENDPOINT + 'users',
     {
       method: 'POST',
       headers: {
@@ -152,7 +153,7 @@ var base64 = require('base-64');
       body: JSON.stringify(data),
     }).then(response => response.json());
 
-   const loginUser = (userName, passWord) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+'users'+'/token',
+   const loginUser = (userName, passWord) => fetch(ENDPOINT +'users'+'/token',
     {
       method: 'POST',
       headers: {
@@ -163,7 +164,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const editScenario = async ( id, data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/edit/' + id,
+  const editScenario = async ( id, data) => fetch(ENDPOINT + 'scenario/edit/' + id,
     {
       method: 'PUT',
       headers: {
@@ -175,7 +176,7 @@ var base64 = require('base-64');
       body: JSON.stringify(data),
     }).then(response => response);
 
-  const deleteScenario = async ( data) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/delete/' + data,
+  const deleteScenario = async ( data) => fetch(ENDPOINT + 'scenario/delete/' + data,
     {
       method: 'DELETE',
       headers: {
@@ -186,7 +187,7 @@ var base64 = require('base-64');
       },
     }).then(response => response);
 
-  const getAllFrameworkDataByName = async ( framework) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/getAllFrameworkDataByName/' + framework + '',
+  const getAllFrameworkDataByName = async ( framework) => fetch(ENDPOINT + 'scenario/getAllFrameworkDataByName/' + framework + '',
     {
       headers: {
         'mode': 'cors',
@@ -196,7 +197,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.json());
 
-  const getFrameworkObjects = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
+  const getFrameworkObjects = async ( frameworktype, scenario, isTest) => fetch(ENDPOINT + 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
@@ -205,7 +206,7 @@ var base64 = require('base-64');
       },
     }).then(response => response.text());
 
-  const getCucumberTest = async ( frameworktype, scenario, isTest) => fetch('https://virtualizationtoolbackend.herokuapp.com/'+ 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
+  const getCucumberTest = async ( frameworktype, scenario, isTest) => fetch(ENDPOINT + 'scenario/' + frameworktype + '/' + scenario + '/' + isTest,
     {
       headers: {
         'mode': 'cors',
