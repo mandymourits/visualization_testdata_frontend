@@ -2,7 +2,7 @@
 const fetch = require('node-fetch');
 import React from 'react';
 require('dotenv').config();
-const ENDPOINT = process.env.ENDPOINT;
+const ENDPOINT = 'https://virtualizationtoolbackend.herokuapp.com/';
 
 var base64 = require('base-64');
 
